@@ -46,11 +46,13 @@ public class MailBoxTestRunnal implements Runnable {
                         mailNewEntity.setOrgId(Integer.parseInt(mail.getEnterpriseId()));
                         mailNewEntity.setId(mail.getId());
 //                    System.out.println(JSONObject.toJSONString(mailNewEntity));
-
-
                         MailFowardArchiveStatuEntity mailFowardArchiveStatuEntity = mailBoxService.getMailFowardArchiveStatuEntity(mail.getId().toString());
                         if (mailFowardArchiveStatuEntity != null) {
-                            mailNewEntity.set
+                            mailNewEntity.setOppositeAnsweredFlag(mailFowardArchiveStatuEntity.getOppositeAnsweredFlag());
+                            mailNewEntity.setForwardFlag(mailFowardArchiveStatuEntity.getForwardFlag());
+                            mailNewEntity.setArchiveFlag(mailFowardArchiveStatuEntity.getArchiveFlag());
+                            mailNewEntity.setMessageId(mailFowardArchiveStatuEntity.getMessageId());
+                            mailNewEntity.setXMicrosoftOriginalMessageId(mailFowardArchiveStatuEntity.getXMicrosoftOriginalMessageId());
                         }
                         mailBoxService.saveMailNewEntityBySql(mailNewEntity);
                     } catch (Exception ex) {

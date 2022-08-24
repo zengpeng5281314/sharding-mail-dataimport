@@ -1,0 +1,9 @@
+spring:
+  profiles:
+    active: test
+
+thread-pool:
+  corePoolSize: 100
+  maximumPoolSize: 100
+  keepAliveTime: 300
+  queueCapacity: 1000

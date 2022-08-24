@@ -1,0 +1,411 @@
+
+
+spring:
+  application:
+    admin:
+      name: sharding-mail-importdata
+  cloud:
+    consul:
+      discovery:
+        #注册服务名，相同服务须一致，为便于配置，建议与/contextPath和application.name保持一致
+        serviceName: ${spring.application.name}
+        #健康检查地址 （contextPath + actuator/health 为全面检查，actuator/info只要服务还在就可以）
+        health-check-path: ${server.context-path}/status/health
+        #所要部署服务器的公网ip 供服务调用者调用,可不填 使用内网
+        prefer-ip-address: true
+        tags: secure=false
+        instance-id: ${spring.application.name}-${server.port}-dev-zp
+        #调试时需置为false
+        enabled: false
+        #调试时需置为false
+        register: false
+      #注册中心地址 client 不指定即为localhost，一般不用指定或与公网ip相同,测试时需放开
+      host: 10.2.2.92
+      port: 8500
+      #调试时需置为false
+      enabled: false
+  shardingsphere:
+    datasource:
+      names: ds0,ds1,ds2,ds3,ds4,ds5,ds6,ds7,ds8,ds9,ds10
+      ds0:
+        type: com.zaxxer.hikari.HikariDataSource
+        driver-class-name: com.mysql.cj.jdbc.Driver
+        jdbc-url: jdbc:mysql:// 39.107.249.228:3306/mail_0?characterEncoding=utf-8
+        username: root
+        password: 123qweasd_zxc
+        connectionTimeoutMilliseconds: 30000
+        idleTimeoutMilliseconds: 60000
+        maxLifetimeMilliseconds: 1800000
+        maxPoolSize: 50
+        minPoolSize: 1
+      ds1:
+        type: com.zaxxer.hikari.HikariDataSource
+        driverClassName: com.mysql.cj.jdbc.Driver
+        jdbc-url: jdbc:mysql:// 39.107.249.228:3306/mail_1?characterEncoding=utf-8
+        username: root
+        password: 123qweasd_zxc
+        connectionTimeoutMilliseconds: 30000
+        idleTimeoutMilliseconds: 60000
+        maxLifetimeMilliseconds: 1800000
+        maxPoolSize: 50
+        minPoolSize: 1
+      ds2:
+        type: com.zaxxer.hikari.HikariDataSource
+        driver-class-name: com.mysql.cj.jdbc.Driver
+        jdbc-url: jdbc:mysql:// 39.107.249.228:3306/mail_2?characterEncoding=utf-8
+        username: root
+        password: 123qweasd_zxc
+        connectionTimeoutMilliseconds: 30000
+        idleTimeoutMilliseconds: 60000
+        maxLifetimeMilliseconds: 1800000
+        maxPoolSize: 50
+        minPoolSize: 1
+      ds3:
+        type: com.zaxxer.hikari.HikariDataSource
+        driver-class-name: com.mysql.cj.jdbc.Driver
+        jdbc-url: jdbc:mysql:// 39.107.249.228:3306/mail_3?characterEncoding=utf-8
+        username: root
+        password: 123qweasd_zxc
+      ds4:
+        type: com.zaxxer.hikari.HikariDataSource
+        driver-class-name: com.mysql.cj.jdbc.Driver
+        jdbc-url: jdbc:mysql:// 39.107.249.228:3306/mail_4?characterEncoding=utf-8
+        username: root
+        password: 123qweasd_zxc
+        connectionTimeoutMilliseconds: 30000
+        idleTimeoutMilliseconds: 60000
+        maxLifetimeMilliseconds: 1800000
+        maxPoolSize: 50
+        minPoolSize: 1
+      ds5:
+        type: com.zaxxer.hikari.HikariDataSource
+        driver-class-name: com.mysql.cj.jdbc.Driver
+        jdbc-url: jdbc:mysql:// 39.107.249.228:3306/mail_5?characterEncoding=utf-8
+        username: root
+        password: 123qweasd_zxc
+        connectionTimeoutMilliseconds: 30000
+        idleTimeoutMilliseconds: 60000
+        maxLifetimeMilliseconds: 1800000
+        maxPoolSize: 50
+        minPoolSize: 1
+      ds6:
+        type: com.zaxxer.hikari.HikariDataSource
+        driver-class-name: com.mysql.cj.jdbc.Driver
+        jdbc-url: jdbc:mysql:// 39.107.249.228:3306/mail_6?characterEncoding=utf-8
+        username: root
+        password: 123qweasd_zxc
+        connectionTimeoutMilliseconds: 30000
+        idleTimeoutMilliseconds: 60000
+        maxLifetimeMilliseconds: 1800000
+        maxPoolSize: 50
+        minPoolSize: 1
+      ds7:
+        type: com.zaxxer.hikari.HikariDataSource
+        driver-class-name: com.mysql.cj.jdbc.Driver
+        jdbc-url: jdbc:mysql:// 39.107.249.228:3306/mail_7?characterEncoding=utf-8
+        username: root
+        password: 123qweasd_zxc
+        connectionTimeoutMilliseconds: 30000
+        idleTimeoutMilliseconds: 60000
+        maxLifetimeMilliseconds: 1800000
+        maxPoolSize: 50
+        minPoolSize: 1
+      ds8:
+        type: com.zaxxer.hikari.HikariDataSource
+        driver-class-name: com.mysql.cj.jdbc.Driver
+        jdbc-url: jdbc:mysql:// 39.107.249.228:3306/mail_8?characterEncoding=utf-8
+        username: root
+        password: 123qweasd_zxc
+        connectionTimeoutMilliseconds: 30000
+        idleTimeoutMilliseconds: 60000
+        maxLifetimeMilliseconds: 1800000
+        maxPoolSize: 50
+        minPoolSize: 1
+      ds9:
+        type: com.zaxxer.hikari.HikariDataSource
+        driver-class-name: com.mysql.cj.jdbc.Driver
+        jdbc-url: jdbc:mysql:// 39.107.249.228:3306/mail_9?characterEncoding=utf-8
+        username: root
+        password: 123qweasd_zxc
+        connectionTimeoutMilliseconds: 30000
+        idleTimeoutMilliseconds: 60000
+        maxLifetimeMilliseconds: 1800000
+        maxPoolSize: 50
+        minPoolSize: 1
+      ds10:
+        type: com.zaxxer.hikari.HikariDataSource
+        driver-class-name: com.mysql.cj.jdbc.Driver
+        jdbc-url: jdbc:mysql://10.2.2.168:3306/mail?characterEncoding=utf-8
+        username: root
+        password: root@dev
+        connectionTimeoutMilliseconds: 30000
+        idleTimeoutMilliseconds: 60000
+        maxLifetimeMilliseconds: 1800000
+        maxPoolSize: 50
+        minPoolSize: 1
+    rules:
+      sharding:
+        sharding-algorithms:
+          database-inline:
+            type: INLINE
+            props:
+              # 分片算法的行表达式（算法自行定义，此处为方便演示效果）
+              algorithm-expression: ds$->{org_id % 10}
+          mail-box-table-inline:
+            # 分片算法类型
+            type: INLINE
+            props:
+              # 分片算法的行表达式
+              algorithm-expression: mail_box_$->{user_id % 50}
+          f-column-value-inline:
+            # 分片算法类型
+            type: INLINE
+            props:
+              # 分片算法的行表达式
+              algorithm-expression: f_column_value_$->{user_id % 50}
+          mail-answer-foward-record-table-inline:
+            # 分片算法类型
+            type: INLINE
+            props:
+              # 分片算法的行表达式
+              algorithm-expression: mail_answer_foward_record_$->{user_id % 50}
+          mail-attachment-table-inline:
+            # 分片算法类型
+            type: INLINE
+            props:
+              # 分片算法的行表达式
+              algorithm-expression: mail_attachment_$->{user_id % 50}
+          mail-box-label-relation-table-inline:
+            # 分片算法类型
+            type: INLINE
+            props:
+              # 分片算法的行表达式
+              algorithm-expression: mail_box_label_relation_$->{user_id % 50}
+          mail-content-table-inline:
+            # 分片算法类型
+            type: INLINE
+            props:
+              # 分片算法的行表达式
+              algorithm-expression: mail_content_$->{user_id % 50}
+          mail-email-uid-table-inline:
+            # 分片算法类型
+            type: INLINE
+            props:
+              # 分片算法的行表达式
+              algorithm-expression: mail_email_uid_$->{user_id % 50}
+          mail-inter-forwarding-record-table-inline:
+            # 分片算法类型
+            type: INLINE
+            props:
+              # 分片算法的行表达式
+              algorithm-expression: mail_inter_forwarding_record_$->{user_id % 50}
+          mail-label-table-inline:
+            # 分片算法类型
+            type: INLINE
+            props:
+              # 分片算法的行表达式
+              algorithm-expression: mail_label_$->{user_id % 50}
+          mail-merger-inquiry-relation-table-inline:
+            # 分片算法类型
+            type: INLINE
+            props:
+              # 分片算法的行表达式
+              algorithm-expression: mail_merger_inquiry_relation_$->{user_id % 50}
+          mail-receivemail-record-table-inline:
+            # 分片算法类型
+            type: INLINE
+            props:
+              # 分片算法的行表达式
+              algorithm-expression: mail_receivemail_record_$->{user_id % 50}
+          mail-sendmail-record-table-inline:
+            # 分片算法类型
+            type: INLINE
+            props:
+              # 分片算法的行表达式
+              algorithm-expression: mail_sendmail_record_$->{user_id % 50}
+          mail-timeaxis-record-table-inline:
+            # 分片算法类型
+            type: INLINE
+            props:
+              # 分片算法的行表达式
+              algorithm-expression: mail_timeaxis_record_$->{user_id % 50}
+        tables:
+          mail_box_new:
+            actual-data-nodes: ds$->{0..9}.mail_box_$->{0..49}
+            database-strategy:
+              standard:
+                sharding-column: org_id
+                sharding-algorithm-name: database-inline
+            table-strategy:
+              standard:
+                sharding-column: user_id
+                sharding-algorithm-name: mail-box-table-inline
+            key-generate-strategy:
+              column: id
+              key-generator-name: snowflakes
+          f_column_value:
+            actual-data-nodes: ds$->{0..9}.f_column_value_$->{0..49}
+            database-strategy:
+              standard:
+                sharding-column: org_id
+                sharding-algorithm-name: database-inline
+            table-strategy:
+              standard:
+                sharding-column: user_id
+                sharding-algorithm-name: f-column-value-inline
+            key-generate-strategy:
+              column: id
+              key-generator-name: snowflakes
+          mail_answer_foward_record:
+            actual-data-nodes: ds$->{0..9}.mail_answer_foward_record_$->{0..49}
+            database-strategy:
+              standard:
+                sharding-column: org_id
+                sharding-algorithm-name: database-inline
+            table-strategy:
+              standard:
+                sharding-column: user_id
+                sharding-algorithm-name: mail-answer-foward-record-table-inline
+            key-generate-strategy:
+              column: id
+              key-generator-name: snowflakes
+          mail_attachment:
+            actual-data-nodes: ds$->{0..9}.mail_attachment_$->{0..49}
+            database-strategy:
+              standard:
+                sharding-column: org_id
+                sharding-algorithm-name: database-inline
+            table-strategy:
+              standard:
+                sharding-column: user_id
+                sharding-algorithm-name: mail-attachment-table-inline
+            key-generate-strategy:
+              column: id
+              key-generator-name: snowflakes
+          mail_box_label_relation:
+            actual-data-nodes: ds$->{0..9}.mail_box_label_relation_$->{0..49}
+            database-strategy:
+              standard:
+                sharding-column: org_id
+                sharding-algorithm-name: database-inline
+            table-strategy:
+              standard:
+                sharding-column: user_id
+                sharding-algorithm-name: mail-box-label-relation-table-inline
+            key-generate-strategy:
+              column: id
+              key-generator-name: snowflakes
+          mail_content:
+            actual-data-nodes: ds$->{0..9}.mail_content_$->{0..49}
+            database-strategy:
+              standard:
+                sharding-column: org_id
+                sharding-algorithm-name: database-inline
+            table-strategy:
+              standard:
+                sharding-column: user_id
+                sharding-algorithm-name: mail-content-table-inline
+            key-generate-strategy:
+              column: id
+              key-generator-name: snowflakes
+          mail_email_uid:
+            actual-data-nodes: ds$->{0..9}.mail_email_uid_$->{0..49}
+            database-strategy:
+              standard:
+                sharding-column: org_id
+                sharding-algorithm-name: database-inline
+            table-strategy:
+              standard:
+                sharding-column: user_id
+                sharding-algorithm-name: mail-email-uid-table-inline
+            key-generate-strategy:
+              column: id
+              key-generator-name: snowflakes
+          mail_inter_forwarding_record:
+            actual-data-nodes: ds$->{0..9}.mail_inter_forwarding_record_$->{0..49}
+            database-strategy:
+              standard:
+                sharding-column: org_id
+                sharding-algorithm-name: database-inline
+            table-strategy:
+              standard:
+                sharding-column: user_id
+                sharding-algorithm-name: mail-inter-forwarding-record-table-inline
+            key-generate-strategy:
+              column: id
+              key-generator-name: snowflakes
+          mail_label:
+            actual-data-nodes: ds$->{0..9}.mail_label_$->{0..49}
+            database-strategy:
+              standard:
+                sharding-column: org_id
+                sharding-algorithm-name: database-inline
+            table-strategy:
+              standard:
+                sharding-column: user_id
+                sharding-algorithm-name: mail-label-table-inline
+            key-generate-strategy:
+              column: id
+              key-generator-name: snowflakes
+          mail_merger_inquiry_relation:
+            actual-data-nodes: ds$->{0..9}.mail_merger_inquiry_relation_$->{0..49}
+            database-strategy:
+              standard:
+                sharding-column: org_id
+                sharding-algorithm-name: database-inline
+            table-strategy:
+              standard:
+                sharding-column: user_id
+                sharding-algorithm-name: mail-merger-inquiry-relation-table-inline
+            key-generate-strategy:
+              column: id
+              key-generator-name: snowflakes
+          mail_receivemail_record:
+            actual-data-nodes: ds$->{0..9}.mail_receivemail_record_$->{0..49}
+            database-strategy:
+              standard:
+                sharding-column: org_id
+                sharding-algorithm-name: database-inline
+            table-strategy:
+              standard:
+                sharding-column: user_id
+                sharding-algorithm-name: mail-receivemail-record-table-inline
+            key-generate-strategy:
+              column: id
+              key-generator-name: snowflakes
+          mail_sendmail_record:
+            actual-data-nodes: ds$->{0..9}.mail_sendmail_record_$->{0..49}
+            database-strategy:
+              standard:
+                sharding-column: org_id
+                sharding-algorithm-name: database-inline
+            table-strategy:
+              standard:
+                sharding-column: user_id
+                sharding-algorithm-name: mail-sendmail-record-table-inline
+            key-generate-strategy:
+              column: id
+              key-generator-name: snowflakes
+          mail_timeaxis_record:
+            actual-data-nodes: ds$->{0..9}.mail_timeaxis_record_$->{0..49}
+            database-strategy:
+              standard:
+                sharding-column: org_id
+                sharding-algorithm-name: database-inline
+            table-strategy:
+              standard:
+                sharding-column: user_id
+                sharding-algorithm-name: mail-timeaxis-record-table-inline
+            key-generate-strategy:
+              column: id
+              key-generator-name: snowflakes
+        key-generators:
+          snowflakes:
+            type: SNOWFLAKE
+        binding-tables: mail_box_new,f_column_value,mail_answer_foward_record,mail_attachment,mail_box_label_relation,mail_content,mail_email_uid,mail_inter_forwarding_record,mail_label,mail_merger_inquiry_relation,mail_receivemail_record,mail_sendmail_record,mail_timeaxis_record
+    props:
+      sql-show: true
+      # 线程池大小  默认值: CPU核数
+      kernel-executor-size: 8
+      # 用于设置接收客户端请求的工作线程个数，默认为CPU核数*2
+      kernel-acceptor-size: 16
